@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luyolo Mahamba - Portfolio</title>
+  <link rel="stylesheet" href="Style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" role="navigation" aria-label="Primary Navigation">
+    <div class="nav-brand">Luyolo Mahamba</div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="Toggle navigation menu">☰</button>
+    <div class="nav-links" id="primary-navigation">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Refresh Button -->
+  <button onclick="location.reload()" class="refresh-btn" aria-label="Refresh page">🔄 Refresh Page</button>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero" aria-label="Introduction">
+    <img src="images/IMG-20250519-WA0000.jpg" alt="Luyolo Mahamba" class="profile-image" />
+    <h1 class="hero-heading">Hi, I'm Luyolo Mahamba</h1>
+    <h2 class="hero-subheading">Aspiring Full-Stack Developer</h2>
+    <p class="hero-description">
+      Passionate about creating innovative web applications and solving complex problems through code.
+      Specializing in Java, HTML, CSS, and modern web technologies.
+    </p>
+    <div class="cta-buttons">
+      <a href="#projects" class="btn primary-btn">View My Work</a>
+      <a href="#contact" class="btn secondary-btn">Get In Touch</a>
+    </div>
+  </section>
+
+  <!-- About Me -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <h2 class="section-title" id="about-title">About Me</h2>
+    <p class="section-content">
+      I'm a dedicated software development student with a passion for creating efficient, scalable applications. My journey in programming began during my freshman year, and I've been captivated by the endless possibilities of technology ever since.
+      I enjoy working on front-end development and have experience with various programming languages and frameworks. I'm always eager to learn new technologies and take on challenging projects that push my skills to the next level.
+      Outside of coding, I like to explore the latest tech trends.
+    </p>
+  </section>
+
+  <!-- Projects -->
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <h2 class="section-title" id="projects-title">Featured Projects</h2>
+    <div class="project">
+      <h3 class="project-title">
+        <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank" rel="noopener noreferrer">
+          Inventory Management System
+        </a>
+      </h3>
+      <p class="project-description">
+        A JavaFX desktop app using MySQL for data storage. It manages products, suppliers, and transactions with add, update, view, and delete features. With one-user access for security, it offers a simple, secure, and efficient solution for small to medium business inventory needs.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="section" id="skills" aria-labelledby="skills-title">
+    <h2 class="section-title" id="skills-title">Skills & Technologies</h2>
+
+    <div class="skills-category">
+      <h4>Frontend Development</h4>
+      <ul class="skills-list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>JavaFX</li>
+        <li>C++</li>
+        <li>Java</li>
+      </ul>
+    </div>
+
+    <div class="skills-category">
+      <h4>Database & Tools</h4>
+      <ul class="skills-list">
+        <li>MySQL</li>
+        <li>GitHub</li>
+        <li>Eclipse</li>
+        <li>Code::Blocks</li>
+        <li>NotePad++</li>
+        <li>Brackets</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section" id="education" aria-labelledby="education-title">
+    <h2 class="section-title" id="education-title">Education & Certifications</h2>
+    <p><strong>Bachelor of Science in Mathematics and Chemistry</strong><br />
+      University of Johannesburg<br />
+      2023 - 2026</p>
+    <p><strong>Relevant Coursework:</strong> Data Structures & Algorithms, Data Communications, Database Systems, Object-Oriented Programming, Real Analysis, Discrete Mathematics, Linear Algebra, Calculus, Complex Analysis, Introductory Abstract Algebra</p>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <h2 class="section-title" id="contact-title">Let's Work Together</h2>
+    <p class="section-content">Have a project in mind or want to collaborate? I'd love to hear from you!</p>
+
+    <section class="contact-info" aria-label="Contact Information">
+      📧 <strong>Email:</strong> <a href="mailto:luyolomahamba7@gmail.com">luyolomahamba7@gmail.com</a><br />
+      📱 <strong>Phone:</strong> <a href="tel:+27710066573">+27 (71) 006-6573</a><br />
+      💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/luyolo-mahamba-b8ab48300" target="_blank" rel="noopener noreferrer">linkedin.com/in/luyolo-mahamba</a><br />
+      🔗 <strong>GitHub:</strong> <a href="https://github.com/Luyo200/Luyo200.git" target="_blank" rel="noopener noreferrer">github.com/luyolo</a>
+    </section>
+   
+    <div class="contact-form">
+      <h3 class="form-title">Send Me a Message</h3>
+      <form id="contact-form" action="https://formspree.io/f/mgvyygna" method="POST" novalidate>
+        <input type="text" name="name" placeholder="Your Name" class="form-input" required aria-required="true" />
+        <input type="email" name="email" placeholder="Your Email" class="form-input" required aria-required="true" />
+        <input type="text" name="subject" placeholder="Subject" class="form-input" />
+        <textarea name="message" placeholder="Your Message" class="form-textarea" required aria-required="true"></textarea>
+        <button type="submit" class="submit-btn">Send Message</button>
+        <p id="form-feedback" role="alert" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    © 2025 Luyolo Mahamba — All Rights Reserved.
+  </footer>
+
+  <!-- AI Chat Assistant Widget -->
+  <div id="chat-widget" role="region" aria-label="Chat Assistant">
+    <div id="chat-header" tabindex="0" role="button" aria-pressed="false" aria-controls="chat-body" aria-expanded="true" onclick="toggleChat()" onkeypress="if(event.key==='Enter'){ toggleChat(); }">
+      Ask Me About My Portfolio
+      <span id="chat-toggle-icon">&#9650;</span>
+    </div>
+    <div id="chat-body">
+      <div id="chat-messages" aria-live="polite" aria-relevant="additions"></div>
+      <form id="chat-form" onsubmit="sendMessage(event)">
+        <input type="text" id="chat-input" placeholder="Type your question..." aria-label="Chat input" autocomplete="off" />
+        <button type="submit" aria-label="Send message">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Link CSS and JS -->
+  <link rel="stylesheet" href="chat.js" />
+  <script src="chat.js" defer></script>
+
+</body>
+</html>
