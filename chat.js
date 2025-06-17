@@ -178,3 +178,49 @@ if (chatForm && chatInput) {
     }, 700);
   });
 }
+document.getElementById('contact-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const form = this;
+  const submitBtn = form.querySelector('.submit-btn');
+  const feedback = document.getElementById('form-feedback');
+
+  // Disable button and show sending
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
+  // Hide feedback
+  feedback.style.display = 'none';
+  feedback.className = '';
+
+  try {
+    const formData = new FormData(form);
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      form.reset();
+      feedback.textContent = 'Message sent successfully! Thank you for contacting us.';
+      feedback.className = 'success';
+      feedback.style.display = 'block';
+    } else {
+      throw new Error('Form submission failed');
+    }
+  } catch (error) {
+    feedback.textContent = 'Sorry, there was an error sending your message. Please try again.';
+    feedback.className = 'error';
+    feedback.style.display = 'block';
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Message';
+    setTimeout(() => {
+      feedback.style.display = 'none';
+    }, 5000);
+  }
+});
+
