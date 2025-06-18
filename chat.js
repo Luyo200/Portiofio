@@ -224,3 +224,37 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   }
 });
 
+const words = [
+  "Aspiring Software Developer",
+  "Aspiring Analyst",
+  "Aspiring Data Scientist",
+  "Aspiring Mathematic Analyst",
+];
+
+const speed = 100;       // Speed per letter (ms)
+const delayBetween = 1000; // Delay between paragraphs
+
+let currentWord = 0;
+let currentChar = 0;
+
+const typewriter = document.getElementById("typewriter");
+
+function typeLetter() {
+  if (currentChar < words[currentWord].length) {
+    typewriter.textContent += words[currentWord].charAt(currentChar);
+    currentChar++;
+    setTimeout(typeLetter, speed);
+  } else {
+    // Done typing one paragraph
+    setTimeout(() => {
+      currentWord++;
+      if (currentWord < words.length) {
+        typewriter.textContent = "";
+        currentChar = 0;
+        typeLetter();
+      }
+    }, delayBetween);
+  }
+}
+
+typeLetter();
