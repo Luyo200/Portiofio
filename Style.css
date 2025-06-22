@@ -1,0 +1,399 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  color: #00aaff;
+  outline: none;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Refresh Button */
+.refresh-btn {
+  margin: 1rem auto;
+  display: block;
+  background: #00aaff;
+  border: none;
+  color: white;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.refresh-btn:hover,
+.refresh-btn:focus {
+  background-color: #0088cc;
+  outline: none;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: #e0f7ff;
+}
+
+.profile-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid #00aaff;
+}
+
+.hero-heading {
+  font-size: 2.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.hero-subheading {
+  font-weight: 600;
+  color: #0077aa;
+  margin-bottom: 1rem;
+}
+
+.hero-description {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.cta-buttons .btn {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.primary-btn {
+  background-color: #00aaff;
+  color: white;
+}
+
+.primary-btn:hover,
+.primary-btn:focus {
+  background-color: #0088cc;
+  outline: none;
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: #00aaff;
+  border: 2px solid #00aaff;
+}
+
+.secondary-btn:hover,
+.secondary-btn:focus {
+  background-color: #00aaff;
+  color: white;
+  outline: none;
+}
+
+/* Sections */
+.section {
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #0077aa;
+  font-weight: 600;
+}
+
+.project, .skills-category {
+  margin-bottom: 1.5rem;
+}
+
+.project-title a {
+  color: #00aaff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.project-title a:hover,
+.project-title a:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+.skills-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
+.skills-list li {
+  background-color: #00aaff;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Contact Info */
+.contact-info {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.contact-info a {
+  color: #00aaff;
+  text-decoration: none;
+}
+
+.contact-info a:hover,
+.contact-info a:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Contact Form */
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #0077aa;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 2px solid #00aaff;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus, .form-textarea:focus {
+  border-color: #0088cc;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0,170,255,0.5);
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background-color: #00aaff;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover,
+.submit-btn:focus {
+  background-color: #0088cc;
+  outline: none;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem 2rem;
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+/* Chat Widget */
+#chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+#chat-header {
+  background-color: #00aaff;
+  color: white;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#chat-header:focus {
+  outline: 3px solid #0088cc;
+}
+
+#chat-body {
+  padding: 1rem;
+  max-height: 350px;
+  overflow-y: auto;
+  display: block;
+}
+
+#chat-messages {
+  height: 200px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.chat-message {
+  padding: 0.4rem 0.6rem;
+  margin-bottom: 0.4rem;
+  border-radius: 8px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.chat-message.user {
+  background-color: #00aaff;
+  color: white;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.chat-message.bot {
+  background-color: #e0f7ff;
+  color: #0077aa;
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+#chat-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#chat-input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid #00aaff;
+  border-radius: 5px;
+}
+
+#chat-input:focus {
+  outline: none;
+  border-color: #0088cc;
+  box-shadow: 0 0 5px rgba(0,170,255,0.5);
+}
+
+#chat-form button {
+  background-color: #00aaff;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#chat-form button:hover,
+#chat-form button:focus {
+  background-color: #0088cc;
+  outline: none;
+}
+
+/* Responsive Nav Toggle */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 58px;
+    right: 0;
+    width: 200px;
+    border-radius: 0 0 0 8px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    margin: 1rem;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
