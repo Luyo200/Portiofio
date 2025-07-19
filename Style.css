@@ -382,4 +382,133 @@
   font-style: italic;
 }
 
-//
+/* ===== AI Chat Assistant Widget Styles ===== */
+
+/* Container of the whole chat widget */
+#chat-widget {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 320px;
+  max-width: 90vw;
+  background-color: #001f3f;       /* Deep navy background */
+  color: #f0f0f0;                  /* Soft light text */
+  border-radius: 15px 15px 0 0;   /* Rounded top corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none;
+  z-index: 9999;                   /* Above most elements */
+}
+
+/* Header bar with chat title */
+#chat-header {
+  background-color: #4caf50;       /* Fresh green */
+  padding: 1rem 1.2rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 15px 15px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  outline-offset: 3px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover and focus states for accessibility */
+#chat-header:hover,
+#chat-header:focus {
+  background-color: #45a049;
+  outline: 2px solid #90ee90; /* Light green outline for keyboard focus */
+}
+
+/* Close icon styling */
+#chat-close-icon {
+  font-size: 1.3rem;
+  color: #f0f0f0;
+  transition: color 0.3s ease;
+}
+
+#chat-close-icon:hover {
+  color: #ff6b6b; /* Cute red on hover */
+}
+
+/* Chat body container */
+#chat-body {
+  background-color: #00264d; /* Darker navy */
+  max-height: 350px;
+  overflow-y: auto;
+  border-radius: 0 0 15px 15px;
+  display: block; /* Toggle between block and none by JS */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Chat messages area */
+#chat-messages {
+  height: 200px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background-color: #003366;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #e0e0e0;
+}
+
+/* Form for input */
+#chat-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Input field styling */
+#chat-input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Input focus effect */
+#chat-input:focus {
+  box-shadow: 0 0 8px #4caf50;
+}
+
+/* Send button styling */
+#chat-form button {
+  background-color: #4caf50;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 0 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Send button hover */
+#chat-form button:hover {
+  background-color: #45a049;
+}
+
+/* Scrollbar styling for chat messages */
+#chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+#chat-messages::-webkit-scrollbar-thumb {
+  background-color: #4caf50;
+  border-radius: 3px;
+}
+
+/* For Firefox */
+#chat-messages {
+  scrollbar-width: thin;
+  scrollbar-color: #4caf50 transparent;
+}
+
