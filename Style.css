@@ -422,11 +422,12 @@
   outline: 2px solid #90ee90; /* Light green outline for keyboard focus */
 }
 
-/* Close icon styling */
+/* Close (hide) icon styling */
 #chat-close-icon {
   font-size: 1.3rem;
   color: #f0f0f0;
   transition: color 0.3s ease;
+  user-select: none;
 }
 
 #chat-close-icon:hover {
@@ -442,6 +443,15 @@
   display: block; /* Toggle between block and none by JS */
   padding: 1rem;
   box-sizing: border-box;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+/* Hide chat body when .hidden class applied */
+#chat-body.hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 1rem; /* Keep horizontal padding so width stays */
 }
 
 /* Chat messages area */
@@ -511,4 +521,3 @@
   scrollbar-width: thin;
   scrollbar-color: #4caf50 transparent;
 }
-
