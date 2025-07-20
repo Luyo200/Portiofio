@@ -24,12 +24,13 @@
 
 <!-- Navigation Bar -->
 <nav class="navbar" role="navigation" aria-label="Primary Navigation">
-  <div class="nav-brand">Welcome to my Portfolio</div>
+  <div class="nav-brand"></div>
   <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation"
     aria-label="Toggle navigation menu">
     ☰
   </button>
   <div class="nav-links" id="primary-navigation">
+    
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
@@ -40,6 +41,8 @@
 
 <!-- Hero Section -->
 <section class="hero" id="hero" aria-label="Introduction">
+     <div class="nav-brand">Welcome to my Portfolio</div>
+
   <img src="images/IMG-20250519-WA0000.jpg" alt="Luyolo Mahamba" class="profile-image" />
   <h1 class="hero-heading">Hi, I'm Luyolo Mahamba</h1>
   <div class="hero-subheading">
@@ -355,8 +358,6 @@
     onclick="toggleChat()" onkeypress="if(event.key==='Enter'){ toggleChat(); }">
     Get in Touch with Me
     <span id="chat-close-icon" aria-hidden="true" onclick="toggleChat()">&#10005;</span>
-
-  <!---- <span id="chat-close-icon" aria-hidden="true">////&#10005;</span>-->
   </div>
 
   <!-- Chat Body -->

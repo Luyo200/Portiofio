@@ -466,6 +466,13 @@
   line-height: 1.4;
   color: #e0e0e0;
 }
+.nav-brand {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
 
 /* Form for input */
 #chat-form {
@@ -552,4 +559,5 @@
   }
 }
 /* Style.css */
+
 
