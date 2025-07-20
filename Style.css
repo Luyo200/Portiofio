@@ -471,7 +471,10 @@
   font-size: 1.5rem;
   font-weight: bold;
   padding: 10px 20px;
+  position: relative;
+  top: -10px; /* Moves the element 10px upward */
 }
+
 
 
 /* Form for input */
