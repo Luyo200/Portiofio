@@ -533,7 +533,7 @@
   .nav-links {
     display: none;
     flex-direction: column;      /* Stack links vertically */
-    background-color: #f0f0f0;   /* Optional background */
+    background-color: #0b0303;   /* Optional background */
     padding: 1rem;               /* Spacing inside the nav */
   }
 
