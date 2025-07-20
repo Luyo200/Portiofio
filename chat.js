@@ -121,7 +121,7 @@ Type the topic name or number.`;
     case '1':
     case 'about me':
     case 'about':
-      return "I'm Luyolo Mahamba, a dedicated software development student passionate about creating efficient and scalable applications. I enjoy front-end development and exploring the latest tech trends.";
+      return " I’m a BSc student in Mathematics and Chemistry with a passion for building efficient and scalable applications.I have a strong foundation in programming languages like Java, HTML, CSS, and JavaScript.Though I’m new to the industry, I’ve gained solid experience through personal projects focused on front-end development and programming frameworks. I love exploring new technologies and applying my skills to solve  real-world problems. Alongside my studies, I’m continuously expanding my knowledge in software development,data analysis, and mathematical modeling.";
 
     case '2':
     case 'education':
@@ -137,7 +137,7 @@ Type the topic name or number.`;
     case 'skills':
     case 'technologies':
     case 'skills & technologies':
-      return "I'm skilled in Java, HTML, CSS, JavaScript, JavaFX, C++, MySQL, and use tools like GitHub, Eclipse, Code::Blocks, Notepad++, and Brackets.";
+      return "I'm skilled in Java, HTML, CSS, JavaScript, JavaFX, C++, python, and use tools like GitHub, Eclipse, Code::Blocks, Notepad++, and Brackets.";
 
     case '5':
     case 'contact':
