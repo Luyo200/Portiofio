@@ -521,3 +521,33 @@
   scrollbar-width: thin;
   scrollbar-color: #4caf50 transparent;
 }
+/* By default, nav links are displayed horizontally */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+/* On smaller screens (like cellphones) */
+@media (max-width: 768px) {
+  /* Hide nav links by default */
+  .nav-links {
+    display: none;
+    flex-direction: column;      /* Stack links vertically */
+    background-color: #f0f0f0;   /* Optional background */
+    padding: 1rem;               /* Spacing inside the nav */
+  }
+
+  /* Show nav links when .active class is toggled */
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* Style the toggle (hamburger) button */
+  .nav-toggle {
+    display: block;              /* Make sure it's visible on small screens */
+    font-size: 2rem;             /* Size of hamburger icon */
+    background: none;            /* No default background */
+    border: none;                /* Remove button border */
+    cursor: pointer;            /* Show pointer on hover */
+  }
+}
