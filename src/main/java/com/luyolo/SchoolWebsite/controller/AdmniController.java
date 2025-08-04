@@ -17,13 +17,13 @@ public class AdmniController {
     @Autowired
     AdminService adminService;
     @PostMapping("/addAdmin")
-    @CrossOrigin(origins ="http://127.0.0.1:5501/" )
+    @CrossOrigin(origins ="http://127.0.0.1:5502/" )
     public Admin addUsers(@RequestBody Admin admin){
         return adminService.addAdmin(admin);
     }
     @PostMapping("/loginAdmin")
 
-    @CrossOrigin(origins ="http://127.0.0.1:5501/" )
+    @CrossOrigin(origins ="http://127.0.0.1:5502/" )
     public Boolean loginUser(@RequestBody LoginRequest loginRequest){
         return adminService.loginAdmin(loginRequest);
     }

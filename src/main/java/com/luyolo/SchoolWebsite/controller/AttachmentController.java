@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.util.List;
 
 
 @RestController
+@CrossOrigin(origins = "http://127.0.0.1:5502")
 public class AttachmentController {
     private AttachmentService attachmentService;
 
@@ -50,4 +52,8 @@ public class AttachmentController {
                 .body((Resource) new ByteArrayResource(attachment.getData()));
     }
 
+    @GetMapping("/documents")
+    public List<Attachment> getAllDocuments() {
+        return attachmentService.getAllAttachments();
+    }
 }
