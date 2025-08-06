@@ -51,31 +51,32 @@ header h1 {
   display: flex; /* Flex layout */
   justify-content: space-between; /* Space between the two tables */
   gap: 1px; /* Invisible gap between tables */
-  padding: 20px; /* Container padding */
+  padding: 2px; /* Container padding */
 }
 
 /* Table wrapper box (for each table) */
 .table-wrapper {
   flex: 1; /* Equal width for each table */
   background: white; /* White background */
-  padding: 10px; /* Inner spacing */
-  border-radius: 6px; /* Rounded corners */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Light shadow */
+  padding: 0px; /* Inner spacing */
+  border-radius: 1px; /* Rounded corners */
+  box-shadow: 0 2px 19px rgba(0, 0, 0, 0.05); /* Light shadow */
   overflow-x: auto; /* Scroll if content overflows horizontally */
 }
 
 /* ===== Table styling ===== */
 table {
-  width: 160%; /* Full width inside wrapper */
+  width: 172%; /* Full width inside wrapper */
   border-collapse: collapse; /* Merge borders */
   table-layout: fixed; /* Fixed column widths */
-  min-width: 100px; /* Prevent table from shrinking too much */
+  min-width: 1000px;
+ /* height: 100%; /* Prevent table from shrinking too much */
 }
 
 /* Table cell and header styling */
 th, td {
   border: 1px solid #ddd; /* Light gray border */
-  padding: 12px 15px; /* Cell padding */
+  padding: 12px 16px; /* Cell padding */
   text-align: left; /* Align text to the left */
   word-wrap: break-word; /* Break long words */
   vertical-align: middle; /* Center content vertically */
@@ -111,7 +112,7 @@ h2 {
 }
 
 /* ===== Responsive adjustments for tablets ===== */
-@media (max-width: 1024px) {
+@media (max-width: 115px) {
   .tables-container {
     flex-direction: column; /* Stack tables vertically */
   }
