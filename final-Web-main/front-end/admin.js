@@ -1,82 +1,142 @@
-const tbody = document.querySelector("#applicationTable tbody");
-tbody.innerHTML = "";
+const baseUrl = "http://localhost:8084";
+const studentsTbody = document.querySelector("#studentsTable tbody");
+const attachmentsTbody = document.querySelector("#attachmentsTable tbody");
+const statusDiv = document.getElementById("status");
 
-async function loadApplications() {
+const statuses = ["Pending", "Accepted", "Rejected", "Waitlisted"];
+
+async function loadData() {
   try {
+    statusDiv.textContent = "Loading data...";
+
     const [studentsResponse, documentsResponse] = await Promise.all([
-      fetch("http://localhost:8084/all"),
-      fetch("http://localhost:8084/documents")
+      fetch(`${baseUrl}/all`),
+      fetch(`${baseUrl}/documents`)
     ]);
 
-    if (!studentsResponse.ok) {
-      console.error("Failed to fetch students:", studentsResponse.status, studentsResponse.statusText);
-      throw new Error("Failed to fetch students");
-    }
-    if (!documentsResponse.ok) {
-      console.error("Failed to fetch documents:", documentsResponse.status, documentsResponse.statusText);
-      throw new Error("Failed to fetch documents");
+    if (!studentsResponse.ok || !documentsResponse.ok) {
+      throw new Error("Failed to fetch data from server");
     }
 
     const students = await studentsResponse.json();
     const documents = await documentsResponse.json();
 
-    console.log("Students loaded:", students.length);
-    console.log("Documents loaded:", documents.length);
-
-    // Create a lookup map by trimmed idNumber for safe matching
-    const documentsById = {};
-    documents.forEach(doc => {
-      if (doc.idNumber) {
-        const key = doc.idNumber.toString().trim();
-        documentsById[key] = doc;
-      }
-    });
-
+    // === Students Table ===
+    studentsTbody.innerHTML = "";
     if (!students.length) {
-      tbody.innerHTML = `<tr><td colspan="13" style="text-align:center;">No applications found.</td></tr>`;
-      return;
+      studentsTbody.innerHTML = `<tr><td colspan="10" style="text-align:center;">No applications found.</td></tr>`;
+    } else {
+      students.forEach(student => {
+        const address = [
+          student.streetAddress || '',
+          student.city || '',
+          student.postalCode || ''
+        ].filter(Boolean).join(", ");
+
+        const submittedAt = student.submittedAt
+          ? new Date(student.submittedAt).toLocaleDateString()
+          : "N/A";
+
+        let currentStatus = "Pending";
+        if (student.status) {
+          const s = student.status.toLowerCase();
+          if (statuses.map(st => st.toLowerCase()).includes(s)) {
+            currentStatus = statuses.find(st => st.toLowerCase() === s);
+          } else {
+            currentStatus = student.status;
+          }
+        }
+
+        const statusOptions = statuses.map(s => {
+          const selected = s === currentStatus ? "selected" : "";
+          return `<option value="${s}" ${selected}>${s}</option>`;
+        }).join("");
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${student.name || ""}</td>
+          <td>${student.surname || ""}</td>
+          <td>${student.email || ""}</td>
+          <td>${student.idNumber || ""}</td>
+          <td>${student.phoneNumber || ""}</td>
+          <td>${student.currentGrade || ""}</td>
+          <td>${student.gradeApplying || ""}</td>
+          <td>${student.stream || ""}</td>
+          <td>${address}</td>
+          <td>
+            <span>${submittedAt}</span><br/>
+            <select class="statusSelect">${statusOptions}</select>
+            <button class="saveStatusBtn">Save</button>
+          </td>
+        `;
+        row.dataset.idNumber = student.idNumber || "";
+        row.dataset.email = student.email || "";
+        studentsTbody.appendChild(row);
+      });
     }
 
-    tbody.innerHTML = "";  // Clear tbody before populating
+    // === Attachments Table ===
+    attachmentsTbody.innerHTML = "";
+    if (!documents.length) {
+      attachmentsTbody.innerHTML = `<tr><td colspan="2" style="text-align:center;">No attachments found.</td></tr>`;
+    } else {
+      documents.forEach(doc => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${doc.fileName || ""}</td>
+          <td><a href="${doc.downloadURL}" target="_blank" rel="noopener noreferrer" download="${doc.fileName}">Download</a></td>
+        `;
+        attachmentsTbody.appendChild(row);
+      });
+    }
 
-    students.forEach(student => {
-      const studentIdNumber = (student.idNumber || "").toString().trim();
-      const doc = documentsById[studentIdNumber] || {};
-
-      // Debug logs per student
-      console.log("Student:", student);
-      console.log("Matched document:", doc);
-
-      // Adjust field names here if your API returns different keys
-      const idDoc = doc.idDocumentFileName || doc.id_document_file_name || "Not uploaded";
-      const parentIdDoc = doc.parentIdDocumentFileName || doc.parent_id_document_file_name || "Not uploaded";
-      const septemberReport = doc.septemberReportFileName || doc.september_report_file_name || "Not uploaded";
-
-      const address = `${student.streetAddress || ""}, ${student.city || ""}, ${student.postalCode || ""}`;
-
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td title="${student.name}">${student.name}</td>
-        <td title="${student.surname}">${student.surname}</td>
-        <td title="${student.email}">${student.email}</td>
-        <td title="${student.idNumber}">${student.idNumber}</td>
-        <td title="${student.phoneNumber}">${student.phoneNumber}</td>
-        <td title="${student.currentGrade}">${student.currentGrade}</td>
-        <td title="${student.gradeApplying}">${student.gradeApplying}</td>
-        <td title="${student.stream}">${student.stream}</td>
-        <td title="${address}">${address}</td>
-        <td title="${idDoc}">${idDoc}</td>
-        <td title="${parentIdDoc}">${parentIdDoc}</td>
-        <td title="${septemberReport}">${septemberReport}</td>
-        <td title="${student.submittedAt || "N/A"}">${student.submittedAt || "N/A"}</td>
-      `;
-      tbody.appendChild(row);
-    });
-
-  } catch (error) {
-    console.error("Error loading applications:", error);
-    tbody.innerHTML = `<tr><td colspan="13" style="color:red; text-align:center;">Failed to load applications.</td></tr>`;
+    statusDiv.textContent = "";
+  } catch (err) {
+    console.error("Error loading data:", err);
+    statusDiv.textContent = "Failed to load data. Check console for details.";
+    studentsTbody.innerHTML = `<tr><td colspan="10" style="color:red; text-align:center;">Failed to load students.</td></tr>`;
+    attachmentsTbody.innerHTML = `<tr><td colspan="2" style="color:red; text-align:center;">Failed to load attachments.</td></tr>`;
   }
 }
 
-loadApplications();
+// === Handle Status Save ===
+studentsTbody.addEventListener("click", async (event) => {
+  if (event.target.classList.contains("saveStatusBtn")) {
+    const row = event.target.closest("tr");
+    const select = row.querySelector(".statusSelect");
+    const newStatus = select.value;
+    const idNumber = row.dataset.idNumber;
+    const email = row.dataset.email;
+
+    event.target.disabled = true;
+    event.target.textContent = "Saving...";
+
+    try {
+      // Replace with actual endpoint in your Spring Boot backend
+      const response = await fetch(`${baseUrl}/update-status`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ idNumber, status: newStatus, email })
+      });
+
+      if (!response.ok) {
+        throw new Error("Status update failed.");
+      }
+
+      event.target.textContent = "Saved";
+      setTimeout(() => {
+        event.target.disabled = false;
+        event.target.textContent = "Save";
+      }, 1500);
+    } catch (error) {
+      console.error("Status update error:", error);
+      alert("Failed to update status.");
+      event.target.disabled = false;
+      event.target.textContent = "Save";
+    }
+  }
+});
+
+document.addEventListener("DOMContentLoaded", loadData);

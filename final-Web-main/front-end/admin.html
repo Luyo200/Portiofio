@@ -2,40 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Panel - Applications</title>
+  <title>Students and Attachments</title>
   <link rel="stylesheet" href="admin.css" />
+  
 </head>
 <body>
-  <header>
-    <h1>Admin Panel - Submitted Applications</h1>
-    <button class="sign-out-button" onclick="window.location.href='index.html'">Sign Out</button>
-  </header>
 
-  <div class="container">
-    <table id="applicationTable" border="1" style="width:100%; margin-top: 20px; border-collapse: collapse;">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Surname</th>
-          <th>Email</th>
-          <th>ID Number</th>
-          <th>Phone Number</th>
-          <th>Current Grade</th>
-          <th>Grade Applying For</th>
-          <th>Stream</th>
-          <th>Address</th>
-          <th>Applicant ID Document</th>
-          <th>Parent/Guardian ID Document</th>
-          <th>September Report</th>
-          <th>Submitted At</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- JavaScript will populate rows here -->
-      </tbody>
-    </table>
+  <div class="tables-container">
+    <!-- Students Table -->
+    <div class="table-wrapper">
+      <h2>Student Applications</h2>
+      <table id="studentsTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>ID Number</th>
+            <th>Phone</th>
+            <th>Current Grade</th>
+            <th>Grade Applying</th>
+            <th>Stream</th>
+            <th>Address</th>
+            <th>Submitted At / Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filled dynamically -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Attachments Table -->
+    <div class="table-wrapper">
+      <h2>Attachments</h2>
+      <table id="attachmentsTable">
+        <thead>
+          <tr>
+           
+            <th>File Name</th>
+            
+            
+            <th>Download Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filled dynamically -->
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <div id="status"></div>
 
   <script src="admin.js"></script>
 </body>

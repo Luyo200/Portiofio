@@ -12,8 +12,9 @@ document.getElementById("applicationFormElement").addEventListener("submit", asy
     return;
   }
 
+  // Prepare student data JSON object
   const student = {
-    name: form.firstName.value.trim(),
+    name: form.name.value.trim(),
     surname: form.surname.value.trim(),
     idNumber: form.idNumber.value.trim(),
     email: form.email.value.trim(),
@@ -26,37 +27,69 @@ document.getElementById("applicationFormElement").addEventListener("submit", asy
     postalCode: form.postalCode.value.trim()
   };
 
+  // Check files
+  const studentIDFile = form.studentIDDoc.files[0];
+  const guardianIDFile = form.guardianIDDoc.files[0];
+  const reportFile = form.septemberReport.files[0];
+
+  if (!studentIDFile || !guardianIDFile || !reportFile) {
+    errorMessage.textContent = "Please upload all required documents.";
+    return;
+  }
+
   try {
-    const response = await fetch("http://localhost:8084/students/add", {
+    // 1. Submit student data JSON to /add
+    const addResponse = await fetch("http://localhost:8084/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(student)
     });
 
-    if (response.status === 409) {
-      // Conflict: Duplicate email or ID
-      const errorData = await response.json();
-      errorMessage.textContent = errorData.message || 
-        "An application with the submitted email or ID number already exists.";
+    if (addResponse.status === 409) {
+      const errorData = await addResponse.json();
+      errorMessage.textContent =
+        errorData.message || "Application with this email or ID already exists.";
       return;
     }
 
-    if (!response.ok) throw new Error("Server error");
+    if (!addResponse.ok) throw new Error("Failed to submit application data.");
 
-    await response.json();
+    const addedStudent = await addResponse.json(); 
+    // Assume backend returns the created student's ID or something you need
 
-    successMessage.textContent = "Application submitted successfully! Redirecting to upload documents in 3 seconds...";
-    form.reset();
+    // 2. Upload files one by one to /upload endpoint
+    // You may want to send student ID along with files if backend needs it
+    const filesToUpload = [
+      { file: studentIDFile, field: "studentIDDoc" },
+      { file: guardianIDFile, field: "guardianIDDoc" },
+      { file: reportFile, field: "septemberReport" }
+    ];
 
-    if (document.getElementById("subjects")) {
-      document.getElementById("subjects").innerHTML = "<strong>Subjects will appear here after selecting a stream.</strong>";
+    for (const fileObj of filesToUpload) {
+      const formData = new FormData();
+      formData.append("file", fileObj.file);
+      // Optionally send student ID if backend requires
+      // formData.append("studentId", addedStudent.id);
+
+      const uploadResponse = await fetch("http://localhost:8084/upload", {
+        method: "POST",
+        body: formData
+      });
+
+      if (!uploadResponse.ok) {
+        throw new Error(`Upload failed for ${fileObj.field}`);
+      }
     }
 
+    successMessage.textContent =
+      "Application and documents submitted successfully! Redirecting in 5 seconds...";
+    form.reset();
+
     setTimeout(() => {
-      window.location.href = "uploadDocuments.html";
-    }, 3000);
+      window.location.href = "index.html";
+    }, 5000);
 
   } catch (error) {
-    errorMessage.textContent = "Failed to submit application. Please try again later.";
+    errorMessage.textContent = "Submission failed: " + error.message;
   }
 });
