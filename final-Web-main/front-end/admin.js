@@ -33,9 +33,16 @@ async function loadData() {
           student.postalCode || ''
         ].filter(Boolean).join(", ");
 
-        const submittedAt = student.submittedAt
-          ? new Date(student.submittedAt).toLocaleDateString()
-          : "N/A";
+        // Format submittedAt date
+          const submittedAt = student.submittedAt
+          ? new Date(student.submittedAt).toLocaleString(undefined, {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+          })
+          : "";
 
         let currentStatus = "Pending";
         if (student.status) {
