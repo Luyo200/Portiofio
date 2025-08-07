@@ -55,7 +55,7 @@ async function handleSubmit(event) {
         }
     } catch (error) {
         console.error("Error occurred during registration:", error);
-        errorMessage.textContent = "An error occurred. Please check your connection.";
+        errorMessage.textContent = "An account with this email/password already exists";
     }
 }
 
