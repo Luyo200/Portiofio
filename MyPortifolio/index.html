@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portifolio</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-top-wrapper">
+            <div class="sidebar-top">
+                <div class="profile-container">
+                    <img src="images/IMG-20250519-WA0000.jpg" alt="Profile Picture" class="profile-picture"
+                        id="profilePicture" />
+                    <span class="profile-name" id="profile-name">Mr L Mahamba</span>
+                </div>
+            </div>
+
+            <div class="search_wrapper">
+                <input type="text" placeholder="Search..." />
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+            </div>
+        </div>
+
+        <ul class="sidebar-links">
+            <li>
+                <button type="button" onclick="alert('About Me clicked!')">
+                    <span class="icon">🙋🏽‍♂️</span> <span class="link-text">About Me</span>
+                </button>
+            </li>
+            <li>
+                <button type="button" onclick="alert('Education clicked!')">
+                    <span class="icon">🎓</span> <span class="link-text">Education</span>
+                </button>
+            </li>
+            <li>
+                <button type="button" onclick="alert('Certifications clicked!')">
+                    <span class="icon">📜</span> <span class="link-text">Certifications</span>
+                </button>
+            </li>
+            <li>
+                <button type="button" onclick="alert('Skills clicked!')">
+                    <span class="icon">🛠️</span> <span class="link-text">Skills</span>
+                </button>
+            </li>
+            <li>
+                <button type="button" onclick="alert('Personal Projects clicked!')">
+                    <span class="icon">🧠</span> <span class="link-text">Personal Projects</span>
+                </button>
+            </li>
+            <li>
+                <button type="button" onclick="alert('Featured Projects clicked!')">
+                    <span class="icon">🌟</span> <span class="link-text">Featured Projects</span>
+                </button>
+            </li>
+            <li>
+                <button type="button" onclick="alert('Contact Info clicked!')">
+                    <span class="icon">📞</span> <span class="link-text">Contact Info</span>
+                </button>
+            </li>
+            <li>
+                <a href="CV/MR LUYOLO MAHAMBA.pdf" target="_blank" rel="noopener noreferrer" class="resume-link">
+                    <span class="icon">📄</span> <span class="link-text">View Resume</span>
+                </a>
+            </li>
+        </ul>
+
+
+
+    </nav>
+
+    <main class="content-area" aria-live="polite">
+        <div class="main-content">
+            <h1>Welcome to My Portfolio</h1>
+            <p>
+                Hi! I’m <strong>Mr L Mahamba</strong>, a passionate developer dedicated to crafting
+                innovative digital experiences. Explore my projects, certifications, and personal
+                journey through the sidebar.
+            </p>
+            <p style="margin-top: 20px; font-style: italic;">
+                If you need assistance or have any questions, please feel free to interact with my AI chatbot for prompt
+                support.
+            </p>
+            <button id="chatbotBtn" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 25px;
+    background-color: #001f3f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+">Open Chatbot</button>
+
+            <div id="chatPopup" style="
+    display: none;
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    width: 320px;
+    max-height: 400px;
+    background-color: #001f3f;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    z-index: 1000;
+    flex-direction: column;
+    ">
+                <div id="chatHeader" style="
+      background-color: #004080;
+      padding: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+    ">
+                    Chat with Me <span id="closeChat" style="float:right; cursor:pointer;">&times;</span>
+                </div>
+                <div id="chatMessages" style="
+      padding: 10px;
+      height: 280px;
+      overflow-y: auto;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    ">
+                    <div><em>Hi! Ask me anything about me or my portfolio.</em></div>
+                </div>
+                <form id="chatForm" style="display: flex; border-top: 1px solid #004080;">
+                    <input id="chatInput" type="text" placeholder="Type your question..." autocomplete="off" style="
+      flex: 1;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 0 0 0 8px;
+      font-size: 14px;
+      outline: none;
+      color: black;
+    ">
+                    <button type="submit" style="
+      background-color: #4CAF50;
+      border: none;
+      padding: 0 15px;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 0 0 8px 0;
+      color: white;
+    ">Send</button>
+                </form>
+            </div>
+
+
+
+    </main>
+
+    <script src="chatBot.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

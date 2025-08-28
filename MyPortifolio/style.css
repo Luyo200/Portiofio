@@ -1,0 +1,222 @@
+/* Basic layout */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 400px;
+  height: 100vh;
+  background-color: #001f3f; /* Navy blue */
+  border-right: 1px solid #ddd;
+  box-sizing: border-box;
+  padding: 20px 10px;
+  float: left;
+}
+
+/* Wrapper around logo and name */
+.sidebar-top-wrapper {
+  margin-bottom: 15px;
+}
+
+.sidebar-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+/* If you use a logo image (not needed now but kept for flexibility) */
+.logo-small {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* Your actual name */
+.profile-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff; /* White name for dark background */
+  text-align: center;
+}
+
+/* Search box */
+.search_wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.search_wrapper input[type="text"] {
+  width: 70%;
+  padding: 8px 30px 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Search icon */
+.search-icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+  color: #666;
+}
+
+/* Sidebar links */
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-links li {
+  margin-bottom: 10px;
+}
+
+/* Buttons and links */
+.sidebar-links button,
+.sidebar-links a {
+  width: 100%;
+  border: none;
+  background: none;
+  font-size: 15px;
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #ffffff; /* White for contrast */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+/* Hover effects for buttons and links */
+.sidebar-links button:hover,
+.sidebar-links a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+/* Icon inside links */
+.icon {
+  font-size: 18px;
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+  color: #ffffff; /* Make icons white */
+}
+
+/* Vertical stack of profile image and name */
+.logo_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  gap: 8px;
+}
+
+/* Centered profile image */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.profile-picture {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 12px;
+}
+
+/* Profile card for displaying personal info */
+.profile-card {
+  background: #ffffff;
+  max-width: 420px;
+  margin: 30px auto;
+  padding: 30px 25px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+  border: 1px solid #ddd;
+}
+
+.profile-card h2 {
+  text-align: center;
+  color: #34495e;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 1.2px;
+}
+
+/* Fields inside profile card */
+.profile-field {
+  margin-bottom: 14px;
+  font-size: 16px;
+  line-height: 1.5;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  transition: background-color 0.3s ease;
+  border-radius: 8px;
+}
+
+.profile-field:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Labels inside card */
+.profile-label {
+  color: #1abc9c;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.profile-value {
+  font-weight: 500;
+}
+
+/* Welcome message on main screen */
+.welcome-message {
+  text-align: center;
+  margin-top: 40px;
+  color: #34495e;
+  font-weight: 600;
+  font-size: 28px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Main content area (right of sidebar) */
+.content-area {
+  margin-left: 400px; /* match sidebar width */
+  padding: 30px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #093762; /* Dark gray */
+  
+  text-align: center;
+  margin-top: 20px;
+  color: #ffffff; /* Change text color to white for contrast */
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
