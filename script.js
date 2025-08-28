@@ -392,7 +392,7 @@ document.querySelector('button[onclick="alert(\'Personal Projects clicked!\')"]'
       imgSrc: './images/Screenshot 2025-07-17 202107.png',
       imgAlt: 'Bright Future High School',
       description: `A responsive website for Bright Future High School in Khayelitsha,
-      Cape Town, built with HTML, CSS, and JavaScript. Showcasing the
+      Cape Town, built with HTML, CSS, JavaScript and Spring Boot. Showcasing the
       school’s values, academic streams, and key information.`,
       githubLink: 'https://github.com/Luyo200/High-School-website.git',
       visitLink: 'https://brighthighschool.netlify.app/',
